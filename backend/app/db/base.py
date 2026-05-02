@@ -1,1 +1,1 @@
-from app.db.models import Base
+from backend.app.db.models import Base

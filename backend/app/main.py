@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.config import settings
-from app.routes.detect_route import router
-from app.db.session import engine
-from app.db.models import Base
+from backend.app.core.config import settings
+from backend.app.routes.detect_route import router
+from backend.app.db.session import engine
+from backend.app.db.models import Base
 
-# Create tables on startup
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -15,7 +14,6 @@ app = FastAPI(
     debug=settings.DEBUG
 )
 
-# CORS — allow all origins for now (tighten later)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -24,7 +22,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Register routes
 app.include_router(router)
 
 @app.get("/")

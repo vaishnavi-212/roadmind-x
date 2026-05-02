@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     DEBUG: bool = False
 
     # Database
-    DATABASE_URL: str = "postgresql://postgres:password@localhost:5432/roadmindx"
+    DATABASE_URL: str = "sqlite:///./roadmindx.db"
 
     # Redis
     REDIS_URL: str = "redis://localhost:6379"
